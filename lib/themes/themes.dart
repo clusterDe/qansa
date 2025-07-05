@@ -20,12 +20,12 @@ ThemeData dataTheme({required bool isDark}) {
       labelStyle: const TextStyle(fontSize: 12),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(defBorderRadius),
-        borderSide: const BorderSide(color: Colors.grey),
+        borderSide: const BorderSide(),
       ),
-      outlineBorder: const BorderSide(color: Colors.grey),
+      outlineBorder: const BorderSide(),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(defBorderRadius),
-        borderSide: const BorderSide(color: Colors.grey),
+        borderSide: const BorderSide(),
       ),
     ),
     tabBarTheme: TabBarThemeData(
@@ -33,7 +33,6 @@ ThemeData dataTheme({required bool isDark}) {
       unselectedLabelStyle: const TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w600,
-        color: Color(0xFFC7C7C7),
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -41,7 +40,6 @@ ThemeData dataTheme({required bool isDark}) {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(defBorderRadius),
         ),
-        foregroundColor: Colors.white,
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
@@ -53,7 +51,6 @@ ThemeData dataTheme({required bool isDark}) {
     ),
     switchTheme: const SwitchThemeData(
       trackOutlineWidth: WidgetStatePropertyAll(0),
-      overlayColor: WidgetStatePropertyAll(Colors.white),
       splashRadius: 16,
     ),
   );
