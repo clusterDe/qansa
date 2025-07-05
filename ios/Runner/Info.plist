@@ -45,5 +45,9 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>App ini memerlukan akses ke galeri untuk menyimpan gambar yang Anda edit.</string>
+	<key>NSDocumentsFolderUsageDescription</key>
+	<string>App ini menyimpan gambar ke folder dokumen lokal Anda.</string>
 </dict>
 </plist>
