@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qansa/data/helpers/custom_snackbar/custom_snackbar.dart';
 import 'package:qansa/data/helpers/shared_pref/shared_pref_helper.dart';
-import 'package:qansa/routes/routes.dart';
 import 'package:qansa/themes/themes.dart';
 
 class ThemesProvider extends ChangeNotifier {
@@ -14,49 +12,42 @@ class ThemesProvider extends ChangeNotifier {
   _initTheme() async {
     await _readSaveTheme();
 
-    themeData = dataTheme(isDark: _isDark);
+    themeData = dataTheme(isDark: isDark);
     notifyListeners();
   }
 
   changeTheme() async {
-    _isDark = true;
+    isDark = !isDark;
     notifyListeners();
 
-    await _saveTheme();
-    _initTheme();
+    var result = await _saveTheme();
+    if (result) {
+      await _initTheme();
+    }
   }
 
   final String _themeKey = 'theme-key';
 
-  bool _isDark = false;
+  bool isDark = false;
 
   _readSaveTheme() async {
     var result = await SharedPrefHelper.readDataBool(keyName: _themeKey);
 
     if (result != null) {
-      _isDark = true;
-      notifyListeners();
-    } else {
-      _isDark = false;
+      isDark = result;
       notifyListeners();
     }
   }
 
-  _saveTheme() async {
+  Future<bool> _saveTheme() async {
     var result = await SharedPrefHelper.writeDataBool(
       keyName: _themeKey,
-      dataBool: _isDark,
+      dataBool: isDark,
     );
 
     if (result) {
-      var context = navigatorKey.currentState!.context;
-      if (!context.mounted) return true;
-      CsnackBar.show(context, content: 'Saved theme');
       return true;
     } else {
-      var context = navigatorKey.currentState!.context;
-      if (!context.mounted) return false;
-      CsnackBar.show(context, content: 'Failed save theme');
       return false;
     }
   }
